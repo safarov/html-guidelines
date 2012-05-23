@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Веб-аналитика — Стандарты верстки компании JetStyle</title>
+
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="publish/_style.css">
+    <!--[if lt IE 8]><link rel="stylesheet" href="publish/_style.ie.css"><![endif]-->
+
+    <script src="//yandex.st/modernizr/2.5.3/modernizr.min.js"></script>
+    <script src="//yandex.st/jquery/1.7.2/jquery.min.js"></script>
+
+</head>
+<body>
+<div class="b-grid">
+    <div class="b-grid__row">
+        <div class="b-grid__column b-grid__column_size_12">
+            <header class="b-header">
+                <h1 class="b-text-h1"><a href="index.html">Стандарты верстки компании JetStyle</a></h1>
+            </header>
+        </div>
+    </div>
+    <div class="b-grid__row">
+        <div class="b-grid__column b-grid__column_size_8">
+            <div class="b-content b-text">
+<h2>Стандарты веб-аналитики</h2>
+
+<p>Данный документ является краткой выдержкой из туториалов систем аналитики по правильной установки и настройки счетчиков Google Analytics и Яндексе.Метрика. На всех изготавливаемых компанией JetStyle сайтах должны при запуске быть установлены как минимум эти два счетчика, но в отдельных случаях могут использоваться и дополнительные. Это  поможет нам сразу с момента запуска получать большой объем информации относительно эффективности работы сайта.</p>
+
+<h3 id="_">Установка счетчиков</h3>
+
+<p>Счетчики устанавливаются на ВСЕ страницы сайта. Счетчики асинхронные и блокируют загрузку страницы, поэтому на них не распространяются правила про объединение и сжатие JS-файлов.</p>
+
+<h4 id="_googla_analytics">Счетчик Googla Analytics</h4>
+
+<p>Код счетчика GA вставляется в конец тега <code>&lt;body&gt;</code> сайта. Счетчик выглядит следующим образом:</p>
+
+<pre><code>&lt;script type="text/javascript"&gt;
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-XXXXX-X']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+&lt;/script&gt;
+</code></pre>
+
+<p>Где <strong>UA-XXXXX-X</strong> это ID текущего счетчика.</p>
+
+<p>В случае когда сайт размещен на нескольких доменах, использует поддомены или в случаях когда нужно отслеживать не все содержимое сайта, а только содержимое отдельных разделов на нем, нужно несколько модифицировать базовый код.</p>
+
+<p>Примеры исправленного кода и описания сценариев можно посмотреть тут:</p>
+
+<ol>
+<li><a href="https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingSite#multipleDomains">Несколько доменов и субдоменов</a></li>
+<li><a href="https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingSite#domainSubDomains">Домен с субдоменами</a></li>
+<li><a href="https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingSite#domainAndSubDirectory">Домен и раздел на другом домене</a></li>
+<li><a href="https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingSite#trackingIFrames">Содержимое iframe на другом домене</a></li>
+<li><a href="https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingSite#singleSubDirectory">Только раздел сайта</a></li>
+<li><a href="https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingSite#twoSubDirectories">Несколько разделом на одном домене</a></li>
+</ol>
+
+<h4 id="_">Счетчик Яндекс.Метрики</h4>
+
+<p>Код счетчика ЯМ вставляется в конец тега <code>&lt;body&gt;</code> сайта. Счетчик выглядит следующим образом:</p>
+<pre><code>&lt;!-- Yandex.Metrika counter --&gt;
+&lt;script type="text/javascript"&gt;
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounterXXXXXXX = new Ya.Metrika({id:XXXXXXX, enableAll: true, webvisor:true});
+        } catch(e) {}
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+&lt;/script&gt;
+&lt;noscript&gt;&lt;div&gt;&lt;img src="//mc.yandex.ru/watch/XXXXXXX" style="position:absolute; left:-9999px;" alt="" /&gt;&lt;/div&gt;&lt;/noscript&gt;
+&lt;!-- /Yandex.Metrika counter --&gt;
+</code></pre>
+
+<p>Где <strong>XXXXXXX</strong> — это номер счетчика. Обратите внимание что комбинация <strong>XXXXXXX</strong> используется в ТРЕХ местах.</p>
+
+<p>В данном варианте счетчика уже включены WebVisor, карта кликов, отслеживание загрузки файлов и перехода по внешним ссылкам. Рекомендуется использовать его на сайтах именно в таком варианте.</p>
+
+<h3>Донастройка Google Analytics</h3>
+
+<p>Все события описанные ниже считаются при помощи JavaScript. Для того чтобы добавить событие нужно сделать push нового элемента в массив _gaq.</p>
+
+<p><strong>Пример:</strong></p>
+
+<pre><code> _gaq.push(['_setCustomVar', 1, 'Пол, 'Женский, 1];
+</code></pre>
+
+<p><strong>Что нужно иметь ввиду при установке:</strong></p>
+
+<ol>
+<li>Данные передаются всегда массивом.</li>
+<li>Первый параметр — всегда название метода, оно начинается с символа «земля».</li>
+<li>Порядок параметров важен, <strong>нельзя пропускать пустые параметры</strong>, надо туда передать либо пустую строку, либо 0, либо false в зависимости от места.</li>
+<li>Название методов чувствительны к регистру.</li>
+<li>В кавычках нужно писать только строки, если писать в кавычках false, true и проч., работать они не будут.</li>
+<li>Лишние пробелы внутри кавычек могут вызывать ошибки.</li>
+</ol>
+
+<p>Можно добавлять события сразу пачкой, например так:</p>
+
+<pre><code>_gaq.push(
+    ['_setAccount', 'UA-XXXXX-X'],
+    ['_setDomainName', 'example.com'],
+    ['_setCustomVar', 1, 'Section', 'Life &amp; Style', 3],
+    ['_trackPageview']
+);
+</code></pre>
+
+<h4 id="_">Пользовательские переменные</h4>
+
+<p>Если мы хотим различать пользователей внутри Google Analytics на основе каких-то известных нам на сайте характеристик, мы можем записать пользователю в cookie до пяти собственных переменных. Для добавления переменной используется метод <strong>_setCustomVar</strong>.</p>
+
+<p><strong>Синтаксис:</strong></p>
+
+<pre><code> _gaq.push(['_setCustomVar', index, name, value, opt_scope]);
+</code></pre>
+
+<p><strong>Переменные:</strong></p>
+
+<table>
+    <tr>
+        <th>Название</th>
+        <th>Описание</th>
+        <th>Тип</th>
+        <th>Обязательность</th>
+    </tr>
+    <tr>
+        <td>index</td>
+        <td>Слот для добавления переменной, возможно значение от 1 до 5. Если в один слот добавить две переменных, более поздняя перепишет уже существующую.</td>
+        <td>число</td>
+        <td>обязательное</td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>Имя переменной, будет использоваться внутри GA для взаимодействия с ней.</td>
+        <td>строка</td>
+        <td>обязательное</td>
+    </tr>
+    <tr>
+        <td>value</td>
+        <td>Значение переменной, будет использоваться внутри GA.</td>
+        <td>строка</td>
+        <td>обязательное</td>
+    </tr>
+    <tr>
+        <td>opt_scope</td>
+        <td>Зана действия переменной. Возможные значения 1 (живет вечно), 2 (живет до окончания сессии) или 3 (живет до перехода на новую страницу). По-умолчанию значение 3.</td>
+        <td>число</td>
+        <td></td>
+    </tr>
+</table>
+
+<p><strong>Места где всегда нужно использовать пользовательские переменные:</strong></p>
+
+<ol>
+<li>При авторизации. Авторизованным пользователям надо ставить переменную: &#8216;Авторизован&#8217;, &#8216;Да&#8217;, 3.</li>
+<li>По завершению покупки надо ставить переменную: &#8216;Покупатель&#8217;, &#8216;Да&#8217;, 3.</li>
+<li>В приложениях для соцсетей надо ставить переменную &#8216;Пол&#8217;, &#8216;Мужской/Женский&#8217;, 3. (брать через API)</li>
+<li>В приложениях для соцсетей надо ставить переменную &#8216;Возраст&#8217;, возраст, 3.  (брать через API)</li>
+</ol>
+
+<p><strong>Документация:</strong></p>
+
+<ol>
+<li><a href="https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingCustomVariables">GA: Custom Variables</a></li>
+</ol>
+
+<h4>Электронная коммерция</h4>
+
+<p>Для расчета эффективности интернет-магазина необходимо специальным образом помечать совершенные в нем покупки. Для этого на страницу которая будет показываться после завершения покупки необходимо добавлять вызов следующих методов:</p>
+
+<p>Сначала нужно добавить блок заказа:</p>
+
+<pre><code>_gaq.push(['_addTrans', orderId, affiliation, total, tax, shipping, city, state, country]);
+</code></pre>
+
+<p>Все переменные в данном блоке, включая цены и количество товаров — строки, поэтому их нужно писать в кавычках.</p> 
+
+<p><strong>Список переменных:</strong></p>
+
+<table width="100%">
+    <tr>
+        <th>Название</th>
+        <th width="100%">Описание</th>
+        <th>Тип</th>
+        <th>Обязательность</th>
+    </tr>
+    <tr>
+        <td>orderId</td>
+        <td>ID заказа в интернет-магазине.</td>
+        <td>строка</td>
+        <td>обязательное</td>
+    </tr>
+    <tr>
+        <td>affiliation</td>
+        <td>Партнер или подразделение.</td>
+        <td>строка</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>total</td>
+        <td>Общая стоимости товаров в заказе.</td>
+        <td>строка</td>
+        <td>обязательное</td>
+    </tr>
+    <tr>
+        <td>tax</td>
+        <td>Налог.</td>
+        <td>строка</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>shipping</td>
+        <td>Стоимость доставки.</td>
+        <td>строка</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>city</td>
+        <td>Город.</td>
+        <td>строка</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>state</td>
+        <td>Область или штат.</td>
+        <td>строка</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>country</td>
+        <td>Страна.</td>
+        <td>строка</td>
+        <td></td>
+    </tr>
+</table>
+
+<p>Далее для КАЖДОГО товара в заказе нужно вызвать следующий метод: </p>
+
+<pre><code>_gaq.push(['_addItem' orderId, sku, name, category, price, quantity]);
+</code></pre>
+
+<p>Все переменные в данном блоке, включая цены и количество товаров — строки, поэтому их нужно писать в кавычках.</p> 
+
+<p><strong>Список переменных:</strong></p>
+
+<table width="100%">
+    <tr>
+        <th>Название</th>
+        <th width="100%">Описание</th>
+        <th>Тип</th>
+        <th>Обязательность</th>
+    </tr>
+    <tr>
+        <td>orderId</td>
+        <td>ID заказа. объявленный в <strong>_addTrans</strong>.</td>
+        <td>строка</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>sku</td>
+        <td>ID товара в магазине.</td>
+        <td>строка</td>
+        <td>обязательное</td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>Название товара.</td>
+        <td>строка</td>
+        <td>обязательное</td>
+    </tr>
+    <tr>
+        <td>category</td>
+        <td>Категория товара.</td>
+        <td>строка</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>price</td>
+        <td>Цена единицы товара.</td>
+        <td>строка</td>
+        <td>обязательное</td>
+    </tr>
+    <tr>
+        <td>quantity</td>
+        <td>Количество единиц товара.</td>
+        <td>строка</td>
+        <td>обязательное</td>
+    </tr>
+</table>
+
+<p>После этого нужно вызвать метод:</p>
+
+<pre><code>_gaq.push(['_trackTrans']);
+</code></pre>
+
+<p>Пример полного кода:</p>
+
+<pre><code>_gaq.push(['_addTrans',
+   '1234',           // order ID - required
+   'Womens Apparel', // affiliation or store name
+   '28.28',          // total - required
+   '1.29',           // tax
+   '15.00',          // shipping
+   'San Jose',       // city
+   'California',     // state or province
+   'USA'             // country
+]);
+_gaq.push(['_addItem',
+   '1234',           // order ID - necessary to associate item with transaction
+   'DD44',           // SKU/code - required
+   'T-Shirt',        // product name
+   'Olive Medium',   // category or variation
+   '11.99',          // unit price - required
+   '1'               // quantity - required
+]);
+_gaq.push(['_trackTrans']);
+</code></pre>
+
+<p><strong>Документация:</strong></p>
+
+<ol>
+    <li><a href="https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingEcommerce">GA: eCommerce</a></li>
+</ol>
+
+<h4>События</h4>
+
+<p>Для того чтобы учитывать события которые происходят без перезагрузки страницы необходимо использовать метод <strong>_trackEvent</strong>. К таким событиям могут относятся: Загрузка файлов, переход по ссылке на внешний сайт, просмотр видео, открытие скрытых секций и прочее.</p>
+
+<p><strong>Синтаксис:</strong></p>
+
+<pre><code>_gaq.push(['_trackEvent', category, action, opt_label, opt_value, opt_noninteraction]);
+</code></pre>
+
+<p><strong>Параметры:</strong></p>
+
+<table width="100%">
+    <tr>
+        <th>Название</th>
+        <th width="100%">Описание</th>
+        <th>Тип</th>
+        <th>Обязательность</th>
+    </tr>
+    <tr>
+        <td>category</td>
+        <td>Категория события (например «Видео»).</td>
+        <td>строка</td>
+        <td>обязательное</td>
+    </tr>
+    <tr>
+        <td>action</td>
+        <td>Название события (например «начало просмотра»).</td>
+        <td>строка</td>
+        <td>обязательное</td>
+    </tr>
+    <tr>
+        <td>opt_label</td>
+        <td>Опциональное описание события (например название видео).</td>
+        <td>строка</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>opt_value</td>
+        <td>Опциональный числовой параметр (например секунда на которой видео остановили).</td>
+        <td>число</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>opt_noninteraction</td>
+        <td>По умолчанию, при срабатывании эвента, он посчитается GA как переход на страницу и страница не будет учитываться в отказах. Если же поставить этот параметр в значение true, вызов эвена не будет считаться взаимодействием.</td>
+        <td>boolean</td>
+        <td></td>
+    </tr>
+</table>
+
+<p><strong>Места где всегда нужно использовать пользовательские переменные:</strong></p>
+
+<ol>
+<li>При скачиваний файлов: &#8220;Файлы&#8221;, &#8220;Скачивание&#8221;, имя_файла.</li>
+<li>При переходе по внешней ссылке на магазин, соцсеть, email и прочие зашитые в интерфейс внешние ссылки: &#8220;Переход&#8221;, &#8220;сайт/соцсеть/email&#8221;, адрес<em>перехода</em></li>
+</ol>
+
+<p>Эвенты на ссылки устанавливаются на событие onclick.</p>
+
+<p><strong>Документация:</strong></p>
+
+<ol>
+    <li><a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide">Event Tracking</a></li>
+</ol>
+
+<h4 id="_">Интеграция с соцсетями</h4>
+
+<p>Если мы хотим считать ретвиты, лайки, комментарии и другую деятельность в соцсетях, нам нужно ловить нажатия социальных кнопок на сайте и вызывать на это нажатие метод <strong>_trackSocial</strong>.</p>
+
+<p><strong>Синтаксис:</strong></p>
+
+<pre><code>_gaq.push(['_trackSocial', network, socialAction, opt_target, opt_pagePath]);
+</code></pre>
+
+<p><strong>Переменные:</strong></p>
+
+<table width="100%">
+    <tr>
+        <th>Название</th>
+        <th width="100%">Описание</th>
+        <th>Тип</th>
+        <th>Обязательность</th>
+    </tr>
+    <tr>
+        <td>network</td>
+        <td>Название соцсети (Facebook, Twitter).</td>
+        <td>строка</td>
+        <td>обязательное</td>
+    </tr>
+    <tr>
+        <td>socialAction</td>
+        <td>Действие в соцсети (Like, Share, Tweet).</td>
+        <td>строка</td>
+        <td>обязательное</td>
+    </tr>
+    <tr>
+        <td>opt_target</td>
+        <td>Цель действия (например адрес страницы с like'ом или её заголовок, имеет смысл заполнять если на странице несколько кнопок like, например в ленте новостей). По умолчанию = document.location.href.</td>
+        <td>строка</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>opt_pagePath</td>
+        <td>URL с которого была вызвано действие. По умолчанию равно location.pathname плюс location.search. Нужно использовать только если у нас аяксовые страницы и мы используем _trackPageview вручную.</td>
+        <td>строка</td>
+        <td></td>
+    </tr>
+</table>
+
+<p>Как правило соцсети включают в код своих социальных кнопок методы для отслеживания их нажатия. например Like для Facebook&#8217;а можно поймать так:</p>
+
+<pre><code>FB.Event.subscribe('edge.create', function(targetUrl) {
+  _gaq.push(['_trackSocial', 'facebook', 'like', targetUrl]);
+});
+</code></pre>
+
+<p>Другие методы используемые Facebook и Twitter можно посмотреть на странице документации по ссылке ниже.</p>
+
+<p><strong>Мы всегда считаем следующие события, если они есть в дизайне страниц:</strong></p>
+
+<ol>
+<li>Facebook Like. (как для сайта в целом, так и для конкретной страницы)</li>
+<li>Facebook Unlike.</li>
+<li>Twitter Tweet.</li>
+<li>vk.com Share.</li>
+<li>Соцкнопки других соцсетей если они есть на сайте и мы умеем их отслеживать.</li>
+</ol>
+
+<p>Документация:</p>
+
+<ol><li><a href="https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingSocial">GA: Social interactions</a></li></ol>
+
+<h4>Страницы на AJAX-сайтах</h4>
+
+<p>Для учета переходов по страницам на AJAX-сайтах нужно вызывать метод <strong>_trackPageview</strong>. при ручном использовании его синтаксис следующий:</p>
+
+<pre><code>_gaq.push(['_trackPageview', opt_pageURL]);
+</code></pre>
+
+<p>Где <strong>opt_pageURL</strong> — это адрес страницы перехода, который запишется в GA.</p>
+
+<p><strong>Документация:</strong></p>
+
+<ol><li><a href="https://developers.google.com/analytics/devguides/collection/gajs/methods/gaJSApiBasicConfiguration#_gat.GA_Tracker_._trackPageview">GA: Track Pageview</a></li></ol>
+
+<h4>Тайм трекинг</h4>
+
+<p>Для экспериментов со скоростью загрузки определенных ресурсов и библиотек на сайте можно использовать метод <strong>_trackTiming</strong>. В базовых настройках мы его не используем, поэтому тут его описания нет. В случае если для определенного сайта это понадобится.
+<p><strong>Документация:</strong></p>
+<ol>
+    <li><a href="https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingTiming">GA: User timings</a></li>
+</ol>
+
+<h4>Интеграция с нестандартными поисковиками</h4>
+
+<p>В ряде случаев нужно уметь отслеживать переход с поисков, которых нету в стандартном списке GA. Для этог можно использовать метод <strong>_addOrganic()</strong>. В базовых настройках мы его не используем, поэтому тут его описания нет. В случае если для определенного сайта это понадобится.</p>
+<p><strong>Документация:</strong></p>
+<ol>
+    <li><a href="https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingTraffic">GA: Search Engines</a></li>
+</ol>
+
+<h3>Донастройка Яндекс.Метрики</h3>
+
+<h4 id="webvisor">WebVisor</h4>
+
+<p>ВебВизор позволяет записывать и проигрывать действия посетителей на сайте. При этом иногда он записывает конфиденциальные пользовательские данные и пытается повторно отправлять формы создавая нам лишние заказы в истории, что не очень хорошо. Чтобы этого не происходило нужно добавлять на сайт ряд параметров препятствующих этому:</p>
+
+<ol>
+<li>Поля, о которых мы знаем что в них будет конфиденциальная информация надо помечать классом <strong>class=&#8221;-metrika-nokeys&#8221;</strong>.</li>
+<li>на формы, которые мы не хотим, чтобы они отправлялись вебвизором, нужно поставить класс <strong>class=&#8221;-visor-no-click&#8221;</strong>.</li>
+</ol>
+
+<h4 id="">Эвенты</h4>
+
+<p>Мы по-умолчанию не используем эвенты в Яндекс.метрики, так как нужную информацию мы уже получаем от эвентов в GA, но в некоторых ситуациях они могут быть полезными.</p>
+
+<p><strong>Документация:</strong></p>
+
+<ol><li><a href="http://help.yandex.ru/metrika/?id=1115035">ЯМ: Отчёт Параметры визитов</a></li></ol>
+
+<h4>Электронная коммерция</h4>
+
+<p>В Яндекс.Метрике есть аналог отчетов электронной коммерции в GA. Составляются они аналогично параметрам в GA.</p>
+
+<p>По умолчанию мы не настраиваем данные отчеты для Яндекс.метрики, но в каких-то случаях они могут оказаться полезными.</p>
+
+<p><strong>Документация:</strong></p>
+
+<ol><li><a href="http://help.yandex.ru/metrika/?id=1115036">ЯМ: Отчёт Параметры интернет-магазинов</a></li></ol>
+
+
+            </div>
+        </div>
+        <div class="b-grid__column b-grid__column_size_4">
+            <div class="b-context b-text">
+                <p><strong>Статус:</strong> Черновик</p>
+                <p><strong>Планируемый пересмотр:</strong> Декабрь 2012 года</p>
+                <p><strong>Материалы по теме:</strong></p>
+                <ol>
+                    <li><a href="http://help.yandex.ru/metrika/">Хелп Яндекс.Метрика</a></li>
+                    <li><a href="http://help.yandex.ru/metrika/">Хелп Google Analytics</a></li>
+                </ol>                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

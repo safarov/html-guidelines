@@ -4,8 +4,8 @@
     "version": "0.1.0",
     "main": "./grunt.js",
     "dependencies": {
-        "grunt-css": "*",
         "grunt-styletto": "*",
+        "grunt-css": "*",
         "styletto": "*",
         "grunt-exec": "*"
     }

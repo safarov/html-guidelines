@@ -95,8 +95,15 @@
 }
 
 .b-text ul {
-    list-style: disc;
+    list-style: none;
 }
+
+.b-text ul > li:before
+ {
+     content: '\2014\a0';
+     float: left;
+     margin-left: -1.25em;
+ }
 
 .b-text ol {
     list-style: decimal;
@@ -151,13 +158,29 @@
 .b-text blockquote:before {}
 .b-text blockquote:after {}
 
+.b-text small {
+    font-size: .85em;
+}
+
+.b-text table {
+    margin-bottom: textBottomMargin;
+}
+
+.b-text th,
+.b-text td {
+    font-size: textTableFontSize;
+    padding: textTableCellPadding;
+    border: textTableBorder;
+}
+
+.b-text th {
+    font-weight: bold;
+    background: textTableHeaderBG;
+    text-align: left;
+}
+
 .b-text address {
     display: block;
     margin-bottom: textBottomMargin;
-    font-style: normal;
     line-height: baseLineHeight;
-}
-
-.b-text small {
-    font-size: .85em;
 }

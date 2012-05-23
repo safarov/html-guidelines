@@ -55,7 +55,7 @@ textHeaderLinkStyle  = none;
 textH1FontFamily = textHeaderFontFamily;
 textH1FontSize   = 48px;
 textH1LineHeight = 70px;
-textH1FontWeight = bold;
+textH1FontWeight = textHeaderFontWeight;
 textH1Color      = textHeaderColor;
 
 textH1Mixin()
@@ -65,7 +65,7 @@ textH1Mixin()
 textH2FontFamily = textHeaderFontFamily;
 textH2FontSize   = 36px;
 textH2LineHeight = baseLineHeight*1.5;
-textH2FontWeight = textHeaderFontWeight;
+textH2FontWeight = bold;
 textH2Color      = textHeaderColor;
 
 textH2Mixin()
@@ -74,7 +74,7 @@ textH3FontFamily = textHeaderFontFamily;
 textH3FontSize   = 24px;
 textH3LineHeight = baseLineHeight;
 textH3FontWeight = textHeaderFontWeight;
-textH3Color      = textHeaderColor;
+textH3Color      = #c00;
 
 textH3Mixin()
 
@@ -103,7 +103,13 @@ textH6Color      = textHeaderColor;
 textH6Mixin()
 
 textPreMixin()
-    border-left: 2px solid #ccc;
+    border-left: 2px solid #c00;
     background: #eee;
+    font-size: 14px;
 
 textBlockquoteMixin()
+
+textTableCellPadding = 0 5px;
+textTableFontSize    = 13px;
+textTableBorder      = 1px solid #ccc;
+textTableHeaderBG    = #eee;

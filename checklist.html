@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Чеклист — Стандарты верстки компании JetStyle</title>
+
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="publish/_style.css">
+    <!--[if lt IE 8]><link rel="stylesheet" href="publish/_style.ie.css"><![endif]-->
+
+    <script src="//yandex.st/modernizr/2.5.3/modernizr.min.js"></script>
+    <script src="//yandex.st/jquery/1.7.2/jquery.min.js"></script>
+
+</head>
+<body>
+<div class="b-grid">
+    <div class="b-grid__row">
+        <div class="b-grid__column b-grid__column_size_12">
+            <header class="b-header">
+                <h1 class="b-text-h1"><a href="index.html">Стандарты верстки компании JetStyle</a></h1>
+            </header>
+        </div>
+    </div>
+    <div class="b-grid__row">
+        <div class="b-grid__column b-grid__column_size_8">
+            <div class="b-content b-text">
+<h2>Чеклист верстки</h2>
+
+<h3 id="_">Общие требования</h3>
+
+<ol>
+<li>Расположение блоков должно быть 1:1 по сравнению с макетом. Допускается расхождение до 5px для текста. Разрешены и даже приветствуются правки размеров и расположения криво нарисованных блоков (разница размерах в 1-2px на разных страницах).</li>
+</ol>
+
+<h3 id="_">Технические стандарты</h3>
+
+<ol>
+<li>Кодировка: UTF-8</li>
+<li>DOCTYPE: HTML5</li>
+<li>Валидность:
+<ol>
+<li>Стили сайта соответствуют стандарту CSS3, за исключением хаков и вендорных ствойств.</li>
+<li>Верстка сайта соответствует стандарту HTML5 за исключением уникальных свойств браузеров и результатов выдачи WYSIWYG-редакторов.</li>
+<li>Не должно быть JavaScript-ошибок.</li>
+</ol></li>
+</ol>
+
+<h3 id="">Доступность</h3>
+
+<ol>
+<li>Сайт корректно отображается в следующих браузерах: Firefox (последний), Chrome (последний), Safari (последний), iPhone (iOS 4.2 и 5.0, landscape, portrait), Android 2.2, Opera (последняя), IE7+, Opera Mini (последняя).</li>
+<li>Сайт корректно отображается при следующей ширине экрана: 1024, 1152, 1280, 1440, 1680, 1920.</li>
+<li>У всех шрифтов, используемых на странице, прописаны <strong>Win/Mac/Linux-аналоги</strong>.</li>
+<li>Все функции сайта доступны при отключенных изображениях.</li>
+<li>Основные функции сайта доступны при выключенном JavaScript.</li>
+<li>Основные функции сайта доступны при выключенном Flash, для Flash-навигации создан аналог без флеша для устройств не поддерживающих Flash (iOS, Android).</li>
+<li>При увеличении шрифта (через настройки браузера или ОС) страницы не ломаются.</li>
+<li>Skype-плагин не ломает вёрстку.</li>
+<li>Ресайз textarea не ломает вёрстку.</li>
+</ol>
+
+<p><strong>Для проектов, где это оговорено, проверяется наличие:</strong></p>
+
+<ol>
+<li>Версии для печати (она должна быть реализована через css).</li>
+<li>Мобильной версии (таки тоже должна быть через css).</li>
+</ol>
+
+<h3 id="">Контент</h3>
+
+<ol>
+<li>Вёрстка должна тянутся, не разваливаться и не терять дизайнерский вид при изменении контента на странице. Его может быть больше или меньше чем на макете, он может быть обёрнут во всякие &lt;p&gt; из визига и т.п.</li>
+<li>Все поля, содержимое которых приходит из CMS проверены на работу с разным вариантом контента: Короткий, длинный, длинный без переноса. Дизайн не разваливается при отсутствии необязательных полей.</li>
+<li>Для контент-зоны прописано оформление следующих HTML-тегов: <strong>H1-H6, ul, ol, li, blockquote, pre, table, p</strong>.</li>
+</ol>
+
+<h3 id="_">Элементы страниц</h3>
+
+<ol>
+<li>Заголовки на странице образуют осмысленную иерархию (h1, h2, … и т.д.).</li>
+<li>У всех пиктограмм и элементов интерфейса значение которых может быть не до конца очевидно есть <strong>title</strong> с подсказкой.</li>
+<li>У всех интерфейсных пиктограм и картинок в контент-зоне есть <strong>alt</strong>.</li>
+<li>У всех ссылок на странице прописаны состояния: <strong>hover, active, focus, visited</strong>.</li>
+<li>У Ссылок на чужие сайты указан <strong>target="blank"</strong>.</li>
+<li>У сайта прописан <strong>favicon.ico</strong> (желательно с включенными внутрь неё 32x32, 48x48 и 64×64 вариациями) и <strong>apple-touch-icon</strong>.</li>
+</ol>
+
+<h3 id="">Формы</h3>
+
+<ol>
+<li>У полей формы задан правильный порядок переключения через <strong>tabindex</strong>.</li>
+<li>Поля label и input/select в форме слинкованы.</li>
+<li>Поля которые можно провалидировать через HTML5 — валидируются. HTML5 ошибки оформлены.</li>
+<li>Форма дополнительно валидируется через JS.</li>
+</ol>
+
+<h3 id="_">Оптимизация скорости работы</h3>
+
+<p><strong>Проверяется для standalone верстки:</strong></p>
+
+<ol>
+<li>Отдельные CSS-файлы объединены в два общих файла (для IE и остальных браузеров) и пожаты.</li>
+<li>Отдельные JS-файлы объединены и пожаты.</li>
+<li><strong>jQuery</strong> и <strong>Modernizr</strong> грузятся с CDN Яндекса.</li>
+<li>Изображения обработаны инструментами для уменьшения их веса.</li>
+<li>Интерфейсные изображения объединены в <strong>спрайты</strong>.</li>
+<li>Декоративные изображения размером меньше 5 Kb включены в файлы стилей как <strong>base64</strong>.</li>
+</ol>
+
+<p><strong>Проверяется для верстки на CMS:</strong></p>
+
+<ol>
+<li>В заголовках сервера настроено <strong>GZ-сжатие</strong>.</li>
+<li>В загловоках сервера настроено <strong>кеширование</strong>.</li>
+</ol>
+
+    </div>
+</div>
+<div class="b-grid__column b-grid__column_size_4">
+    <div class="b-context b-text">
+        <p><strong>Статус:</strong> Черновик</p>
+        <p><strong>Планируемый пересмотр:</strong> Декабрь 2012 года</p>
+        <p><strong>Материалы по теме:</strong></p>
+        <ol>
+            <li><a href="http://habrahabr.ru/post/114256/">Чеклист верстки Игоря Зенича</a></li>
+        </ol>                
+    </div>
+</div>
+<div class="b-grid__row">
+    <div class="b-grid__column b-grid__column_size_8">
+        <div class="b-content b-text">
+
+
+<h3 id="_">Структура и наименование элементов</h3>
+
+<ol>
+<li>Наименование и расположение элементов страниц соответствуют нашим стандартам.</li>
+</ol>
+
+        </div>
+    </div>
+    <div class="b-grid__column b-grid__column_size_4">
+        <div class="b-text">
+            <a href="structure.html"><em>Стандарты наименования и расположения элементов</em></a>
+        </div>
+    </div>
+    <div class="b-grid__row">
+        <div class="b-grid__column b-grid__column_size_8">
+            <div class="b-content b-text">
+
+<h3 id="seo">SEO</h3>
+
+<p><strong>Проверяется для standalone верстки:</strong></p>
+
+<ol>
+<li>У всех страниц которые не нужно индексировать (страницы CMS, поисковая выдача) прописан meta-тег &#8220;<strong>robots</strong>&#8221; со значением &#8220;<strong>noindex</strong>&#8221;.</li>
+<li>Контент на странице который не нужно индексировать обернут тегом <code>&lt;noindex&gt;</code>.
+Ссылки котроые не нужно индексировать (например пользовательнские разделы сайта) имеют аттрибут <strong>rel=&#8221;nofollow&#8221;</strong>.</li>
+<li>Для поддержваемых нами типов контета прописана микродата (смотри стандарт).</li>
+<li>Для автосайтов информация об автомобилях оформлена микроформатами <strong>hProduct</strong> и <strong>hReview</strong>.</li>
+</ol>
+
+<p><strong>Проверяется для верстки на CMS:</strong></p>
+
+<ol>
+<li>У всех страниц прописан тег <code>&lt;title&gt;</code>.</li>
+<li>У всех индексируемых страниц прописаны <code>&lt;meta&gt;</code>-теги "<strong>keywords</strong>" и "<strong>description</strong>".</li>
+<li>У всех индексируемых страниц прописан <strong>canonical URL</strong>.</li>
+</ol>
+        </div>
+    </div>
+    <div class="b-grid__column b-grid__column_size_4">
+        <div class=" b-text">
+            <a href="seo.html"><em>Стандарты SEO</em></a>
+        </div>
+    </div>
+    <div class="b-grid__row">
+        <div class="b-grid__column b-grid__column_size_8">
+            <div class="b-content b-text">
+
+<h3 id="_">Веб-аналитика</h3>
+
+<p><strong>Проверяется для верстки на CMS:</strong></p>
+
+<ol>
+<li>На странице установлен счетчик Googla Analytics с правильным ID.</li>
+<li>На странице установлен счетчик Яндекс.Метрики с правильным ID.</li>
+<li><strong>GA. Custom variables:</strong> На страницах успешной авторизации, завершнной покупке в интернет магазине и авторизации для приложения в соцсети ставятся наобходимы по стандарту переменные.</li>
+<li><strong>GA. Custom variables:</strong> На прочих страницах указанных отделом продвижения установлены дополнительные переменные.</li>
+<li><strong>GA. Ecommerce:</strong> На странице завершеной покупки в интернет магазине есть блок ecommerce.</li>
+<li><strong>GA. Events:</strong> На ссылках на скачивание файлов и на ссылки на внешние страницы стоят эвенты.</li>
+<li><strong>GA. Events:</strong> На прочие действия указанные отделом продвижения установлены дополнительные переменные.</li>
+<li><strong>GA. Интеграция с соцсетями:</strong> На like, share, comment и другие инструменты социальных сетей на стрницах сайта повешены счетчики.</li>
+<li><strong>GA. Страницы на AJAX-сайтах:</strong> На AJAX-сайтах при переходе со страницы на страницу вызывается метод _trackPageview.</li>
+<li><strong>ЯМ. WebVisor:</strong> На полях формы которые не надо запоминать стоит класс <strong>-metrika-nokeys</strong>.</li>
+<li><strong>ЯМ. WebVisor:</strong> На формах которые не ужно отправлять стоит класс <strong>-visor-no-click</strong>.</li>
+</ol>
+
+
+
+            </div>
+        </div>
+        <div class="b-grid__column b-grid__column_size_4">
+            <div class="b-text">
+                <a href="webanalytics.html"><em>Стандарты веб-аналитики</em></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

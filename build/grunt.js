@@ -6,10 +6,10 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         files: '<config:lint.files>',
-        tasks: 'lint'
+        tasks: 'concat'
       },
       css: {
-        files: ['../blocks/.css', '../blocks/.styl', '../blocks/**/*.css','../blocks/**/*.styl','../blocks/**/*.less'],
+        files: ['../blocks/**/*.css','../blocks/**/*.styl','../blocks/**/*.less'],
         tasks: 'styletto:dev styletto:dev_ie'
       }
     },
@@ -43,20 +43,6 @@ module.exports = function(grunt) {
         resolveFrom: ""
       }
     },
-    csslint: {
-      base_theme: {
-        src: '<config:styletto.dev.src>',
-        rules: {
-            "import": false,
-            "overqualified-elements": 2,
-            "unique-headings": false,
-            "star-property-hack": false,
-            "known-properties": false,
-            "box-sizing": false,
-            "qualified-headings": false
-        }
-      }
-    },
     meta: {
       version: '0.1.0',
       banner: '/*! JAM-BOILERPLATE - v<%= meta.version %> - ' +
@@ -85,7 +71,9 @@ module.exports = function(grunt) {
             command: 'rm -rf ../publish/*'
         },
         optimize_images: {
-            command: 'imgo -b -m ../blocks/*'
+            command: 'imgo -b -m ../blocks/*',
+            stdout: true,
+            stderr: true
         }
     },
     jshint: {
@@ -110,11 +98,11 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-styletto');
-  grunt.loadNpmTasks('grunt-css');
   grunt.loadNpmTasks('grunt-exec');
+  grunt.loadNpmTasks('grunt-css');
 
-  grunt.registerTask('default', 'concat styletto:dev styletto:dev_ie watch');
+  grunt.registerTask('default', 'concat styletto:dev styletto:dev_ie');
   grunt.registerTask('watcher', 'concat styletto:dev styletto:dev_ie watch');
-  grunt.registerTask('publish', 'exec styletto csslint concat lint min');
+  grunt.registerTask('publish', 'exec styletto concat lint min');
 
 };
