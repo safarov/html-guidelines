@@ -16,28 +16,28 @@ module.exports = function(grunt) {
     styletto: {
       dev: {
         src: "../blocks/style.css",
-        dest: "../_style.css",
+        dest: "../style.css",
         compress: false,
         base64: false,
         resolveFrom: ""
       },
       dev_ie: {
         src: "../blocks/style.ie.css",
-        dest: "../_style.ie.css",
+        dest: "../style.ie.css",
         compress: false,
         base64: false,
         resolveFrom: ""
       },
       publish: {
         src: "../blocks/style.css",
-        dest: "../_style.min.css",
+        dest: "../style.min.css",
         compress: true,
         base64: true,
         resolveFrom: ""
       },
       publish_ie: {
         src: "../blocks/style.ie.css",
-        dest: "../_style.ie.min.css",
+        dest: "../style.ie.min.css",
         compress: true,
         base64: true,
         resolveFrom: ""
@@ -57,13 +57,13 @@ module.exports = function(grunt) {
     concat: {
       dist: {
         src: ['../lib/**/*.js', '../blocks/**/*.js'],
-        dest: '../_script.js'
+        dest: '../script.js'
       }
     },
     min: {
       dist: {
         src: '<config:concat.dist.dest>',
-        dest: '../_script.min.js'
+        dest: '../script.min.js'
       }
     },
     jshint: {
