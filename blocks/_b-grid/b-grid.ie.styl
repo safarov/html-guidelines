@@ -1,0 +1,27 @@
+@import '../config';
+
+.b-grid {
+    *zoom: 1;
+}
+
+.b-grid__row {
+    *zoom: 1;
+}
+
+spanGenerator(columns)
+
+    for N in 1..(columns)
+
+        fluidColumnName = '.b-grid_type_fluid .b-grid__column_size_' + N;
+        {fluidColumnName} {
+            *width: unit((fluidGridColumnWidth * N + fluidGridGutterWidth * ( N - 1 ) - (.5 / gridContainerWidth * 100)), "%");
+        }
+
+    for N in 1..(columns - 1)
+
+        fluidOffsetName = '.b-grid_type_fluid .b-grid__offset_size_' + N;
+        {fluidOffsetName} {
+            *margin-left: unit((fluidGridColumnWidth * N + fluidGridGutterWidth * ( N + 1 ) - (.5 / gridContainerWidth * 100)), "%");
+        }
+
+spanGenerator(gridColumns)

@@ -1,0 +1,12 @@
+{
+    "name": "jam-build",
+    "description": "jam-boilerplate build script",
+    "version": "0.1.0",
+    "main": "./grunt.js",
+    "dependencies": {
+        "grunt-css": "*",
+        "grunt-styletto": "*",
+        "styletto": "*",
+        "grunt-exec": "*"
+    }
+}
